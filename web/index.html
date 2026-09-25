@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDReader</title>
+  <link rel="icon" href="app-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="vendor/katex/katex.min.css" />
+</head>
+<body>
+  <header>
+    <button id="btn-open" type="button">打开课件</button>
+    <span id="file-name">未打开课件</span>
+    <span id="ingest-status"></span>
+    <button id="btn-credits" type="button">积分 <span id="credits-balance">0</span></button>
+    <label class="theme-label">外观
+      <select id="theme-select">
+        <option value="light">白</option>
+        <option value="dark">黑</option>
+        <option value="system">跟随系统</option>
+        <option value="eye">护眼</option>
+      </select>
+    </label>
+    <button id="btn-settings" type="button">设置</button>
+  </header>
+  <main>
+    <aside id="thumbs-col">
+      <div id="thumbs-bar">
+        <button id="btn-fav-filter" type="button" title="只看收藏的幻灯片">只看收藏</button>
+      </div>
+      <aside id="thumbs"></aside>
+    </aside>
+    <div id="split-left" class="split-v" title="拖动调整缩略图宽度"></div>
+    <section id="stage">
+      <div id="slide-frame">
+        <img id="slide-img" alt="幻灯片" />
+        <div id="slide-media"></div>
+      </div>
+      <div id="stage-drop-hint">把 PPT 或 PDF 课件拖到这里打开<br />或点左上角「打开课件」</div>
+    </section>
+    <div id="split-right" class="split-v" title="拖动调整问答宽度"></div>
+    <aside id="ai">
+      <div id="script-pane">
+        <div class="pane-head">
+          <strong>本页讲稿</strong>
+          <div class="pane-head-actions">
+            <button id="btn-script" type="button">生成本页</button>
+            <button id="btn-script-all" type="button">生成全部讲稿</button>
+          </div>
+        </div>
+        <div id="script-body" class="empty">打开课件后，可生成本页讲稿。</div>
+      </div>
+      <div id="resize" class="split-h" title="拖动调整讲稿与问答高度"></div>
+      <div id="chat-pane">
+        <div class="pane-head">
+          <div class="pane-head-title">
+            <strong>问答</strong>
+            <label class="web-search-switch">
+              <input id="web-search" type="checkbox" />
+              联网搜索
+            </label>
+          </div>
+          <div class="pane-head-actions">
+            <span id="page-hint">当前第 — 页</span>
+            <button id="btn-qa-favs" type="button">收藏夹</button>
+            <button id="btn-clear-chat" type="button">清空上下文</button>
+          </div>
+        </div>
+        <div id="chat-log"></div>
+        <div id="chat-attach"></div>
+        <input id="chat-file" type="file" accept="image/*" multiple hidden />
+        <textarea id="chat-input" rows="3" placeholder="可粘贴截图，问这一块是什么意思"></textarea>
+        <div class="chat-actions">
+          <label class="route-switch">通道
+            <select id="ai-route">
+              <option value="byok">自有 API</option>
+              <option value="platform">平台积分（gpt-5.6-sol）</option>
+            </select>
+          </label>
+          <button id="btn-attach" type="button">添加截图</button>
+          <button id="btn-send" type="button">发送</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <dialog id="settings-dialog">
+    <form method="dialog" id="settings-form">
+      <h3>API 设置</h3>
+      <p>下面只用于「自有 API」。选「平台积分」时由服务器调用模型，不必在这里填 Key。</p>
+      <label>Base URL <input id="set-base" type="text" placeholder="自行填写，保存后记住" /></label>
+      <label>API Key <input id="set-key" type="password" placeholder="留空表示不修改已保存的密钥" /></label>
+      <label>模型 <input id="set-model" type="text" placeholder="自行填写，保存后记住" /></label>
+      <label>授权方式
+        <select id="set-auth">
+          <option value="bearer">Bearer</option>
+          <option value="raw">仅密钥</option>
+        </select>
+      </label>
+      <label>外观
+        <select id="set-theme">
+          <option value="light">白</option>
+          <option value="dark">黑</option>
+          <option value="system">跟随系统</option>
+          <option value="eye">护眼</option>
+        </select>
+      </label>
+      <p id="set-status"></p>
+      <p id="set-update-line">当前版本 <span id="set-app-version">读取中…</span></p>
+      <p id="set-update-status"></p>
+      <div class="dialog-actions">
+        <button id="btn-test" type="button">测试连接</button>
+        <button id="btn-save-settings" type="button">保存</button>
+        <button id="btn-check-update" type="button">检查更新</button>
+        <button value="close" type="submit">关闭</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="credits-dialog">
+    <form method="dialog">
+      <button class="credits-close" value="close" type="submit">关闭</button>
+    </form>
+    <h3>充值积分</h3>
+    <p id="credits-balance-line" class="credits-balance">当前余额 <b>¥0</b></p>
+    <section class="invite-box">
+      <p class="invite-copy">分享邀请码，双方各得2积分(可生成20页PPT讲稿)</p>
+      <p class="invite-label">我的邀请码</p>
+      <div class="invite-code-row">
+        <code id="my-invite-code">生成中…</code>
+        <button id="btn-copy-invite" type="button">复制</button>
+      </div>
+      <label class="credits-code-label">朋友的邀请码
+        <input id="invite-code" type="text" autocomplete="off" placeholder="填入朋友发给你的邀请码" />
+      </label>
+      <div class="dialog-actions credits-redeem-row">
+        <button id="btn-invite-redeem" type="button">领取邀请积分</button>
+      </div>
+      <p id="invite-status"></p>
+    </section>
+    <ol class="credits-steps">
+      <li>用微信扫描下方二维码，添加好友</li>
+      <li>告知要充值的金额并完成付款</li>
+      <li>收到兑换码后，填到下面并点「兑换到账」</li>
+    </ol>
+    <p class="credits-rate">1 积分 = 1 元 token。充值金额与积分比例为 1:2（充 1 元到账 2 积分）。</p>
+    <img id="wechat-qr" src="wechat-qr.jpg" alt="加微信换兑换码" />
+    <p class="credits-qr-caption">扫码加微信，付款后领取兑换码</p>
+    <label class="credits-code-label">兑换码
+      <input id="credit-code" type="text" autocomplete="off" placeholder="把收到的兑换码粘贴到这里" />
+    </label>
+    <div class="dialog-actions credits-redeem-row">
+      <button id="btn-redeem" type="button">兑换到账</button>
+    </div>
+    <details class="credits-legacy">
+      <summary>微信商户扫码付款（备选）</summary>
+      <section class="pay-box">
+        <p class="pay-hint">商户资质配齐后可用。先选金额，再用微信扫描收款码。充值金额与积分比例为 1:2。</p>
+        <div class="pay-amounts">
+          <button type="button" data-pay-amount="10">¥10</button>
+          <button type="button" data-pay-amount="20">¥20</button>
+          <button type="button" data-pay-amount="50">¥50</button>
+          <button type="button" data-pay-amount="100">¥100</button>
+        </div>
+        <div id="pay-qr" aria-label="微信支付二维码"></div>
+        <p id="pay-hint" class="pay-hint">尚未配置时会提示缺少商户信息</p>
+      </section>
+    </details>
+    <p id="credits-status"></p>
+    <p class="credits-note">按 token 计费：1 积分 = 1 元 token。</p>
+  </dialog>
+  <dialog id="qa-fav-dialog">
+    <h3>问答收藏夹</h3>
+    <input id="qa-fav-search" type="search" placeholder="按文字搜索收藏的问答" />
+    <div id="qa-fav-list"></div>
+    <form method="dialog" class="dialog-actions">
+      <button value="close">关闭</button>
+    </form>
+  </dialog>
+  <dialog id="update-dialog">
+    <h3>发现新版本</h3>
+    <p id="update-copy">服务器有新的安装包。更新会先关闭当前程序，请选择原来的安装目录。</p>
+    <p id="update-status"></p>
+    <div class="dialog-actions">
+      <button id="btn-update-later" type="button">稍后</button>
+      <button id="btn-update-now" type="button">立即更新</button>
+    </div>
+  </dialog>
+  <script src="vendor/katex/katex.min.js"></script>
+  <script src="vendor/qrcode.min.js"></script>
+  <script src="viz3d.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

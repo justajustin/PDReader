@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="430" viewBox="0 0 1280 430" role="img" aria-labelledby="title desc">
+<title id="title">PDReader — 看课件，也看懂课件。</title><desc id="desc">PPT 与 PDF 的 AI 学习工作台。阅读、理解、追问、复习。</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101b32"/><stop offset="1" stop-color="#17294a"/></linearGradient><linearGradient id="accent"><stop stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".035"/></pattern></defs>
+<rect width="1280" height="430" rx="24" fill="url(#bg)"/><rect width="1280" height="430" rx="24" fill="url(#grid)"/>
+<g font-family="Segoe UI,Microsoft YaHei,PingFang SC,sans-serif">
+<rect x="62" y="54" width="34" height="34" rx="9" fill="url(#accent)"/><path d="M72 63v17m0-17h8a5 5 0 0 1 0 10h-8" fill="none" stroke="#102137" stroke-width="3"/>
+<text x="110" y="81" fill="#eef2ff" font-size="30" font-weight="700">PDReader</text>
+<text x="64" y="176" fill="#f8fafc" font-size="52" font-weight="700">看课件，也看懂课件。</text>
+<text x="66" y="224" fill="#b9c7db" font-size="22">把原页、讲解与追问，放在同一个学习窗口。</text>
+<rect x="66" y="271" width="187" height="42" rx="21" fill="#263953"/><text x="88" y="299" fill="#91f1dc" font-size="18">PPT / PDF × AI</text>
+<text x="67" y="369" fill="#91a4bd" font-size="16" letter-spacing="2">READ · UNDERSTAND · ASK · REMEMBER</text>
+<g transform="translate(810 69)"><rect width="396" height="280" rx="15" fill="#0b1529" stroke="#354861"/><rect x="1" y="1" width="394" height="29" rx="14" fill="#26364e"/>
+<circle cx="17" cy="15" r="4" fill="#fb7185"/><circle cx="31" cy="15" r="4" fill="#fbbf24"/><circle cx="45" cy="15" r="4" fill="#5eead4"/>
+<rect x="14" y="45" width="49" height="36" rx="4" fill="#324861"/><rect x="14" y="91" width="49" height="36" rx="4" fill="#324861" stroke="#5eead4"/><rect x="14" y="137" width="49" height="36" rx="4" fill="#324861"/>
+<rect x="78" y="67" width="176" height="153" rx="8" fill="#f1f5f9"/><text x="92" y="97" fill="#172b43" font-size="15" font-weight="700">从一页，到一个理解。</text>
+<path d="M102 179Q125 128 150 166T229 133" fill="none" stroke="#7c3aed" stroke-width="4"/><path d="M96 120v69h140" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+<rect x="269" y="49" width="111" height="91" rx="7" fill="#243250"/><text x="281" y="72" fill="#c4b5fd" font-size="13">本页讲稿</text><path d="M282 89h84m-84 14h65m-65 14h74" stroke="#647792" stroke-width="4"/>
+<rect x="269" y="151" width="111" height="94" rx="7" fill="#243250"/><text x="281" y="176" fill="#5eead4" font-size="13">继续追问</text><path d="M282 193h73m-73 14h84m-84 14h54" stroke="#647792" stroke-width="4"/>
+</g><text x="852" y="383" fill="#8fa5c1" font-size="16">你的课件。你的节奏。你的 API。</text></g></svg>

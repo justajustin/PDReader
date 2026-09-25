@@ -1,0 +1,29 @@
+name: 报告问题
+description: 提交一个可以复现的客户端问题
+title: "[Bug] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 遇到了什么问题？
+      description: 请描述预期行为与实际行为，不要包含密钥或个人课件。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: "1. 打开一个 PDF…"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 环境
+      placeholder: "Windows 11 / PDReader 0.2.14 / PDF 或 PPTX / Office 或 WPS 版本"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 脱敏截图、日志或可公开的最小示例

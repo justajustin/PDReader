@@ -1,0 +1,15 @@
+name: 功能建议
+description: 说说你想改善的学习场景
+title: "[Idea] "
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: 你在哪个学习场景遇到了困难？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望怎样改善？
+      description: 可以补充示例或参考，不必先设计实现方式。

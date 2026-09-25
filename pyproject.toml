@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppt-study"
+version = "0.2.14"
+description = "A Windows desktop companion for learning from PPT and PDF with AI."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+  "pywebview>=5.0",
+  "python-pptx>=1.0.0",
+  "pywin32>=306; sys_platform == 'win32'",
+  "httpx>=0.27",
+  "pillow>=10.0",
+  "pypdfium2>=5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pyinstaller>=6.0"]
+
+[project.scripts]
+ppt-study = "ppt_study.app:main"
+
+[project.urls]
+Homepage = "https://github.com/justajustin/PDReader"
+Issues = "https://github.com/justajustin/PDReader/issues"
+
+[tool.setuptools.package-data]
+ppt_study = ["billing_endpoint.json"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
