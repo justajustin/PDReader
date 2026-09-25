@@ -10,7 +10,7 @@
   <a href="#开发与打包"><img alt="183 tests passed locally" src="https://img.shields.io/badge/Local_tests-183_passed-16a34a?style=flat-square" /></a>
   <a href="https://github.com/justajustin/PDReader/actions/workflows/tests.yml"><img alt="GitHub Actions workflow" src="https://img.shields.io/badge/GitHub_Actions-workflow-64748b?style=flat-square" /></a>
 
-  <p><a href="#快速开始">快速开始</a> · <a href="#看看实际界面">界面预览</a> · <a href="docs/USAGE.md">使用指南</a> · <a href="README.en.md">English</a></p>
+  <p><a href="https://pdreader.fun/download"><strong>下载 Windows 客户端</strong></a> · <a href="#从源码运行">从源码运行</a> · <a href="#看看实际界面">界面预览</a> · <a href="docs/USAGE.md">使用指南</a> · <a href="README.en.md">English</a></p>
 </div>
 
 ## 看到了公式，却不知道它在说什么？
@@ -20,6 +20,33 @@
 **PDReader 把原始课件、逐页讲稿和 AI 问答放进同一个桌面窗口。** 打开一份 PPT 或 PDF，停在不懂的那一页，直接问「这一步为什么成立？」。提问时会带上当前页图文，以及选取的相邻页和相关页文字。
 
 > 适合自学、课后复习，也适合在备课时先梳理一页内容的讲解思路。
+
+## 直接下载客户端
+
+**不想配置源码环境或自己打包？可以直接下载安装 Windows 客户端，无需安装 Python，也无需自行部署平台后台。**
+
+### [下载 Windows 客户端 →](https://pdreader.fun/download)
+
+1. 打开下载页，点击「下载 Windows 安装包」。
+2. 在 Windows 电脑上运行安装包，按提示安装并打开 PDReader。
+3. 打开一份 PPT 或 PDF，开始生成讲稿和提问。AI 模型调用或平台积分的费用，以所选服务为准。
+
+目前支持 **Windows**。打开 PPT / PPTX 需要本机安装 PowerPoint 或支持 COM 自动化的 WPS；PDF 不需要 Office。若从微信打开下载页，请点右上角「… → 在浏览器打开」后下载。手机扫码可以访问下载页，安装包需要在 Windows 电脑上使用。
+
+<details>
+<summary>查看客户端下载二维码</summary>
+
+<p align="center">
+  <a href="https://pdreader.fun/download">
+    <img src="docs/assets/download.jpg" alt="PDReader Windows 客户端下载入口与二维码，指向 https://pdreader.fun/download" width="360" />
+  </a>
+</p>
+
+图片中的版本号和安装包大小是截图时的信息，**以下载页实际显示为准**。下载站安装包和本仓库源码的版本可能不同。
+
+</details>
+
+想修改代码或自行构建？继续查看 [从源码运行](#从源码运行) 和 [开发与打包](#开发与打包)。
 
 ## 看看实际界面
 
@@ -43,7 +70,7 @@
 - **使用自己的 API。** 填写 Base URL、API Key 和模型名称即可连接兼容的模型服务；看图需要模型支持图像输入，联网搜索需要服务支持对应工具。
 - **按习惯阅读。** 浅色、深色、跟随系统和护眼主题；支持提取部分内嵌媒体与超链接，兼容程度取决于文件和媒体格式。
 
-## 快速开始
+## 从源码运行
 
 ### 1. 准备环境
 
@@ -107,7 +134,7 @@ powershell -ExecutionPolicy Bypass -File scripts/build_exe.ps1
 powershell -ExecutionPolicy Bypass -File scripts/build_installer.ps1
 ```
 
-安装包脚本优先使用 Inno Setup 6；未安装时使用随仓库提供的 PyInstaller 安装器方案。自行构建的安装包不含代码签名。源码版本为 **0.2.14**；本仓库的初次发布提供源码与构建脚本，未附预构建安装包。
+安装包脚本优先使用 Inno Setup 6；未安装时使用随仓库提供的 PyInstaller 安装器方案。自行构建的安装包不含代码签名。本仓库源码版本为 **0.2.14**。预构建 Windows 安装包通过上方的 [客户端下载页](https://pdreader.fun/download) 提供，安装包版本以下载页为准；本仓库保留源码与构建脚本。
 
 代码入口：`src/ppt_study/app.py`；桌面桥接：`api.py`；课件处理：`ingest.py`；模型通信：`ai_client.py`；界面：`web/`。更多说明见 [开发指南](CONTRIBUTING.md)。
 

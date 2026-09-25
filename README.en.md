@@ -4,7 +4,7 @@
 
 A Windows desktop study companion that brings PPT / PDF pages, AI-generated explanations, and contextual questions into one workspace.
 
-[中文](README.md) · [Usage guide (Chinese)](docs/USAGE.md) · [Contributing](CONTRIBUTING.md)
+[Download Windows app](https://pdreader.fun/download) · [中文](README.md) · [Usage guide (Chinese)](docs/USAGE.md) · [Contributing](CONTRIBUTING.md)
 
 ![PDReader workspace](docs/assets/workspace-light.png)
 
@@ -18,6 +18,27 @@ A Windows desktop study companion that brings PPT / PDF pages, AI-generated expl
 - Read typeset math; request supported diagrams, surfaces, or educational animations.
 - Save important slides and Q&A, and switch between light, dark, system, and eye-care themes.
 - Connect your own compatible AI endpoint and model.
+
+## Download the Windows app
+
+**Prefer a ready-to-use client? [Download the Windows installer](https://pdreader.fun/download) without installing Python, setting up the source environment, or deploying the platform backend.**
+
+Open the download page, choose the Windows installer, and run it on your Windows PC. PPT / PPTX files require PowerPoint or COM-compatible WPS Presentation; PDF works without Office. AI provider usage or platform credits may incur charges under the selected service's terms.
+
+If you open the page in WeChat, use **… → Open in browser** to download. Scanning the QR code on a phone opens the download page; the installer must run on Windows.
+
+<details>
+<summary>Show the download QR code</summary>
+
+<p align="center">
+  <a href="https://pdreader.fun/download">
+    <img src="docs/assets/download.jpg" alt="PDReader Windows download page and QR code" width="360" />
+  </a>
+</p>
+
+The version and package size shown in this image were captured when the screenshot was taken. Check the download page for the actual installer version, which may differ from this repository's source version.
+
+</details>
 
 ## Run from source
 
@@ -46,7 +67,7 @@ powershell -ExecutionPolicy Bypass -File scripts/build_exe.ps1
 powershell -ExecutionPolicy Bypass -File scripts/build_installer.ps1
 ```
 
-The initial public version, 0.2.14, provides source and build scripts; no prebuilt installer is attached. Windows is the supported desktop target. PDF media support varies with the file and codec. AI answers should be checked against the original material.
+This repository provides source version 0.2.14 and build scripts. A prebuilt Windows installer is available through the [download page](https://pdreader.fun/download); its version may differ from the source version. Windows is the supported desktop target. PDF media support varies with the file and codec. AI answers should be checked against the original material.
 
 ## Scope and license
 

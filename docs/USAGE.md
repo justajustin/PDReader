@@ -1,5 +1,11 @@
 # 使用 PDReader
 
+## 直接下载安装
+
+无需配置源码环境，可前往 [PDReader 客户端下载页](https://pdreader.fun/download) 下载安装 Windows 客户端。下载后运行安装包即可，无需安装 Python。也可以扫描 [下载二维码](assets/download.jpg) 访问下载页；微信内请使用右上角「… → 在浏览器打开」。手机仅用于访问下载页，安装包需在 Windows 电脑运行。
+
+安装包版本以下载页显示为准，可能与本仓库源码版本不同。源码新增的功能和选项是否已包含在安装包中，请以对应版本为准。
+
 ## 配置自有 API
 
 在「设置」里填写 Base URL、API Key 和模型名称，保存后点击「测试连接」。Base URL 是接口根地址，例如服务商提供的 `https://api.example.com/v1`，不要填完整的 `/chat/completions` 或 `/responses` 地址。多数服务使用 Bearer 授权；仅在服务商要求时切换为「仅密钥」。
@@ -32,7 +38,7 @@ $env:PPT_STUDY_DISABLE_PLATFORM = "1"
 .\.venv\Scripts\python.exe -m ppt_study
 ```
 
-恢复默认行为可在当前 PowerShell 中执行 `Remove-Item Env:PPT_STUDY_DISABLE_PLATFORM` 后重启。运行安装版时，同样可以在设置该变量的终端里启动 `PDReader.exe`。
+恢复默认行为可在当前 PowerShell 中执行 `Remove-Item Env:PPT_STUDY_DISABLE_PLATFORM` 后重启。通过本仓库源码构建的安装版也可以在设置该变量的终端里启动 `PDReader.exe`；下载站的其他版本是否支持该选项，以该版本实际实现为准。
 
 平台积分是可选远程服务，不包含在开源仓库中。公开源码中的充值配图是占位图。第三方分发者应配置自己的公开端点及联系信息；`src/ppt_study/billing_endpoint.json` 只包含公开服务地址，不应填入密钥。
 
