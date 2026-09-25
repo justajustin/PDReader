@@ -7,7 +7,8 @@
   <img alt="Windows 10 / 11" src="https://img.shields.io/badge/Windows-10%20%2F%2011-2563eb?style=flat-square" />
   <img alt="Python 3.11+" src="https://img.shields.io/badge/Python-3.11%2B-0f766e?style=flat-square" />
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-7c3aed?style=flat-square" /></a>
-  <a href="https://github.com/justajustin/PDReader/actions/workflows/tests.yml"><img alt="Client tests" src="https://github.com/justajustin/PDReader/actions/workflows/tests.yml/badge.svg" /></a>
+  <a href="#开发与打包"><img alt="183 tests passed locally" src="https://img.shields.io/badge/Local_tests-183_passed-16a34a?style=flat-square" /></a>
+  <a href="https://github.com/justajustin/PDReader/actions/workflows/tests.yml"><img alt="GitHub Actions workflow" src="https://img.shields.io/badge/GitHub_Actions-workflow-64748b?style=flat-square" /></a>
 
   <p><a href="#快速开始">快速开始</a> · <a href="#看看实际界面">界面预览</a> · <a href="docs/USAGE.md">使用指南</a> · <a href="README.en.md">English</a></p>
 </div>
@@ -92,6 +93,8 @@ $env:PPT_STUDY_DISABLE_PLATFORM = "1"
 设置默认保存在 `%APPDATA%\PPTStudyCompanion\`。**API Key 当前以明文保存于本机 `settings.json`**，不要把该目录或含密钥的截图上传到 Issue。默认的平台统计还会包含设备标识、课件文件名、页数和使用事件；详见 [数据与联网说明](docs/PRIVACY.md)。
 
 ## 开发与打包
+
+2026-09-25 发布前在 Windows / Python 3.13.9 本地运行 **183 项客户端测试，全部通过**。这不是云端 CI 结果；Python 3.11 / 3.12 的云端验证状态请查看 [GitHub Actions](https://github.com/justajustin/PDReader/actions/workflows/tests.yml)。
 
 ```powershell
 # 运行客户端测试

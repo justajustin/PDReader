@@ -38,6 +38,8 @@ The environment variable above disables platform connections, including registra
 
 ## Develop and build
 
+The public client passed **183 local tests on Windows / Python 3.13.9 on September 25, 2026**. This is a local validation result, not a CI result. See [GitHub Actions](https://github.com/justajustin/PDReader/actions/workflows/tests.yml) for the Python 3.11 / 3.12 cloud workflow status.
+
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
 powershell -ExecutionPolicy Bypass -File scripts/build_exe.ps1
